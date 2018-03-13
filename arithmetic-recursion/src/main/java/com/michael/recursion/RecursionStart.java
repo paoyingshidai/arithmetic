@@ -41,12 +41,16 @@ public class RecursionStart {
 		}
 	 }
 	 
+
+
+
 	public static void main(String[] args) {
 		System.out.println(recursionSum(4));
 		System.out.println(recursionMulity(4));
 		long now = System.currentTimeMillis();
 		System.out.println(Fribonacci(40));
 		System.out.println(System.currentTimeMillis() - now); // 5632  8778
+		hanoiTower(3, 'A', 'B', 'C');
 	}
 
 }

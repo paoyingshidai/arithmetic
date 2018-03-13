@@ -31,10 +31,23 @@ public class RecursionStart {
 
     }
 
+
+	 public static void hanoiTower(int level, char from, char inner, char to) {
+		 if (level ==1) {
+			System.out.println("将 " + level + "号盘子从 " + from + " 移动到 " + to);
+		} else {
+			hanoiTower(level -1, from, to, inner);
+			System.out.println("将 " + level + "号盘子从 " + from + " 移动到 " + to);
+			hanoiTower(level -1, inner, from, to);
+		}
+	 }
+
+
 	public static void main(String[] args) {
 		System.out.println(recursionSum(4));
 		System.out.println(recursionMulity(4));
 		System.out.println(Fribonacci(40));
+		hanoiTower(3, 'A', 'B', 'C');
 	}
 
 }

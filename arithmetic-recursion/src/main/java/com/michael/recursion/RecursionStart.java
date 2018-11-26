@@ -2,18 +2,18 @@ package com.michael.recursion;
 
 public class RecursionStart {
 
-//	1.µİ¹éÇóºÍ1+2+3+.....+n
+//	1.é€’å½’æ±‚å’Œ1+2+3+.....+n
 
 	public static Integer recursionSum(Integer n){
 	   if(n>0){
-	      return n+recursionSum(n-1);
+	      return n + recursionSum(n-1);
 	   }else{
 	      return 0;
 	   }
 	}
 
 
-//	2.µİ¹é½×³Ën! = n * (n-1) * (n-2) * ...* 1(n>0)
+//	2.é€’å½’é˜¶ä¹˜n! = n * (n-1) * (n-2) * ...* 1(n>0)
 
 	public static Integer recursionMulity(Integer n){
 	   if(n==1){
@@ -22,27 +22,25 @@ public class RecursionStart {
 	   return n*recursionMulity(n-1);
 	}
 
-//	ì³²¨ÄÇÆõËã·¨  ·Ç³£ºÄ·ÑĞÔÄÜ
+//	æ–æ³¢é‚£å¥‘ç®—æ³•  éå¸¸è€—è´¹æ€§èƒ½
 	 public static int Fribonacci(int n){
         if(n<=2)
             return 1;
         else
-            return Fribonacci(n-1)+Fribonacci(n-2);
+            return Fribonacci(n-1) + Fribonacci(n-2);
 
     }
 
 	 public static void hanoiTower(int level, char from, char inner, char to) {
 		 if (level ==1) {
-			System.out.println("½« " + level + "ºÅÅÌ×Ó´Ó " + from + " ÒÆ¶¯µ½ " + to);
+			 System.out.println("å°† " + level + "å·ç›˜å­ä» " + from + " ç§»åŠ¨åˆ° " + to);
 		} else {
 			hanoiTower(level -1, from, to, inner);
-			System.out.println("½« " + level + "ºÅÅÌ×Ó´Ó " + from + " ÒÆ¶¯µ½ " + to);
+			 System.out.println("å°† " + level + "å·ç›˜å­ä» " + from + " ç§»åŠ¨åˆ° " + to);
 			hanoiTower(level -1, inner, from, to);
 		}
 	 }
 	 
-
-
 
 	public static void main(String[] args) {
 		System.out.println(recursionSum(4));

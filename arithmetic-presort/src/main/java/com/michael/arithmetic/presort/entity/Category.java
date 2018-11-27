@@ -1,8 +1,10 @@
 package com.michael.arithmetic.presort.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,10 +15,10 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category implements Serializable {
+public class Category extends Model<Category> {
 
-    @TableId("category_id")
-    private Integer categoryId;
+    @TableId(value = "category_id", type = IdType.AUTO)
+    private Long categoryId;
 
     @TableField("name")
     private String name;
@@ -27,4 +29,8 @@ public class Category implements Serializable {
     @TableField("rgt")
     private Integer rgt;
 
+    @Override
+    protected Serializable pkVal() {
+        return this.categoryId;
+    }
 }

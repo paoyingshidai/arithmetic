@@ -15,7 +15,10 @@ public class CategoryService extends ServiceImpl<CategoryMapper, Category> imple
     @Override
     public void addCategory(Category category) {
 
-        baseMapper.insert(category);
+//        baseMapper.insert(category);
+
+        categoryMapper.save(category);
+        System.out.println(category.getCategoryId());
 
     }
 

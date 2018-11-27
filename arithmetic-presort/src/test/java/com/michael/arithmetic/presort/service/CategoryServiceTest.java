@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 public class CategoryServiceTest {
 
-
     @Autowired
     private ICategoryService categoryService;
 

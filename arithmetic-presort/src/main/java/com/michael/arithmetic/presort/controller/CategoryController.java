@@ -6,7 +6,6 @@ import com.michael.arithmetic.presort.object.TreeNode;
 import com.michael.arithmetic.presort.repository.CategoryMapper;
 import com.michael.arithmetic.presort.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -84,6 +84,7 @@
 
     <select id="selectAll" resultMap="resultMap">
         SELECT * FROM t_category
+        ORDER BY level ASC, lft ASC, category_id ASC
     </select>
 
 </mapper>

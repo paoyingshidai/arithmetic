@@ -1,6 +1,7 @@
 package com.michael.arithmetic.presort.controller;
 
 import com.michael.arithmetic.presort.entity.Category;
+import com.michael.arithmetic.presort.object.TreeNode;
 import com.michael.arithmetic.presort.repository.CategoryMapper;
 import com.michael.arithmetic.presort.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,13 @@ public class CategoryController {
         categoryService.deleteCategory(targetCategoryId);
 
         return "delete succcess";
+    }
+
+
+    @RequestMapping("findAllTree")
+    public List<TreeNode<Category>> findAllTree() {
+
+        return categoryService.findAllCategory();
     }
 
 

@@ -1,6 +1,9 @@
 package com.michael.arithmetic.presort.service;
 
 import com.michael.arithmetic.presort.entity.Category;
+import com.michael.arithmetic.presort.object.TreeNode;
+
+import java.util.List;
 
 public interface ICategoryService {
 
@@ -12,6 +15,6 @@ public interface ICategoryService {
 
     void deleteCategory(Long id);
 
-    void findAllCategory();
+    List<TreeNode<Category>> findAllCategory();
 
 }

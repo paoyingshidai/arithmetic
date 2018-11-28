@@ -1,5 +1,7 @@
 package com.michael.arithmetic.presort.service;
 
+import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.michael.arithmetic.presort.entity.Category;
 import com.michael.arithmetic.presort.object.TreeNode;
@@ -7,7 +9,10 @@ import com.michael.arithmetic.presort.repository.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.expression.Lists;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -106,30 +111,40 @@ public class CategoryService extends ServiceImpl<CategoryMapper, Category> imple
         categoryMapper.save(category);
     }
 
+    /**
+     * 这个算法的一个缺点是： 必须保证父节点在前面，因此数据库查询出来时需要排序
+     * @return
+     */
     @Override
-    public void findAllCategory() {
+    public List<TreeNode<Category>> findAllCategory() {
 
         List<Category> categories = categoryMapper.selectAll();
 
         // 组装
+        Long parentId;
+        HashMap<Long, TreeNode<Category>> idMapNode = new HashMap<>();
+        List<TreeNode<Category>> tree = new ArrayList<>();
 
         for (Category category : categories) {
 
+            TreeNode<Category> node = new TreeNode<>(category, new ArrayList<>());
 
+            idMapNode.put(category.getCategoryId(), node);
 
+            parentId = category.getParentId();
 
+            if (parentId != null && parentId != 0) {
+                if (idMapNode.get(parentId) != null) {
+                    idMapNode.get(parentId).getChildren().add(node);
+                }
+            }
 
+            if (category.getLevel() == 0) {
+                tree.add(node);
+            }
         }
 
-    }
-
-
-    private List<TreeNode<Category>> wrapCategories(List<Category> categories) {
-
-
-
-
-        return null;
+        return tree;
     }
 
 }

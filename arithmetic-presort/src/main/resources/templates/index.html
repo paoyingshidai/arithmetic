@@ -13,41 +13,51 @@
              style="width: 80%; background-color: gainsboro; margin-top: 200px;">
 
             <div class="row">
-                <div class="col-md-12">
-                    <p class="h2">新增</p>
-                </div>
-                <div class="col-md-12">
-                    <label>请输入分类</label>
-                    <select class="col-md-6" id="category" v-model="selectedCategoryId">
-                        <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
-                    </select>
-                </div>
-                <div class="col-md-12">
-                    <label>加入同级还是子级</label>
-                    <select class="col-md-6" id="type" v-model="type">
-                        <option value="0" >同级</option>
-                        <option value="1" >子级</option>
-                    </select>
-                </div>
-                <div class="col-md-12">
-                    <label>请输入分类名称</label>
-                    <input class="col-md-6" type="text" id="name" name="name" placeholder="请输入分类名"/>
-                </div>
+                <div class="col-md-3"></div>
+                <form id="form" role="form" href="javascirpt:void(0);" class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="h2">新增</p>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="category">请输入分类</label>
+                            <select class="col-md-12 form-control" id="category" v-model="selectedCategoryId">
+                                <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>加入同级还是子级</label>
+                                <select class="col-md-12 form-control" id="type" v-model="type">
+                                    <option value="0" >同级</option>
+                                    <option value="1" >子级</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>请输入分类名称</label>
+                            <input class="col-md-12 form-control" type="text" id="name" name="name" placeholder="请输入分类名"/>
+                        </div>
 
-            </div>
+                    </div>
 
-            <button class="btn btn-info" v-on:click="btnSubmit">{{message}}</button>
+                    <button class="btn btn-info" v-on:click="btnSubmit">{{message}}</button>
 
-            <div class="col-md-12">
-                <p class="h2">删除</p>
+                    <hr class="color-picker" style="border: solid 1px #5bc0de"/>
+
+                    <div class="col-md-12">
+                        <p class="h2">删除</p>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label>请输入分类</label>
+                        <select class="col-md-12 form-control" id="deleteCategory" v-model="selectedDeleteCategoryId">
+                            <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-info" v-on:click="btnDelete">删除</button>
+                </form>
+                <div class="col-md-3"></div>
             </div>
-            <div class="col-md-12">
-                <label>请输入分类</label>
-                <select class="col-md-6" id="deleteCategory" v-model="selectedDeleteCategoryId">
-                    <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
-                </select>
-            </div>
-            <button class="btn btn-info" v-on:click="btnDelete">删除</button>
 
         </div>
     </div>

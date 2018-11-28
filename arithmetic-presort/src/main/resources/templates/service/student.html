@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf</title>
+</head>
+<style type="text/css">
+    table,table tr th, table tr td { border:1px solid #0094ff; }
+    td {
+        text-align: center;
+    }
+</style>
+<body>
+    <a href="/thymelf/indexPage"> 主页 </a>
+    <p>
+        获取学生资料列表，以及 ${}, *{} 的表达。
+        <span>详情可参见：
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expressions-on-selections-asterisk-syntax">
+                https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expressions-on-selections-asterisk-syntax
+            </a>
+        </span>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>学号</td>
+                <td>性别</td>
+                <td>年龄</td>
+            </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+            <!--<td th:text="${student.username}"></td>-->
+            <!--<td th:text="${student.studentId}"></td>-->
+            <!--<td th:text="${student.sex}"></td>-->
+            <!--<td th:text="${student.age}"></td>-->
+        <!--</tr>-->
+        <tr th:each="student: ${students}">
+            <div th:object="${student}">
+                <td><p th:text="${student.username}">姓名</p></td>
+                <td><p th:text="${student.studentId}">学号</p></td>
+                <td><p th:text="*{sex}">性别</p></td>
+                <td><p th:text="*{age}">年龄</p></td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

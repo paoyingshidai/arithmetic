@@ -31,6 +31,49 @@
         )
     </update>
 
+    <update id="rightUp2WhereRightGtRight">
+        UPDATE t_category
+        SET rgt = rgt + 2
+        WHERE rgt <![CDATA[ > ]]> #{right}
+    </update>
+
+
+    <update id="leftUp2WhereLeftGtRight">
+        UPDATE t_category
+        SET lft = lft + 2
+        WHERE lft <![CDATA[ > ]]> #{right}
+    </update>
+
+    <update id="rightUp2WhereRightGtLeft">
+        UPDATE t_category
+        SET rgt = rgt + 2
+        WHERE rgt <![CDATA[ > ]]> #{left}
+    </update>
+
+    <update id="leftUp2WhereLeftGtLeft">
+        UPDATE t_category
+        SET lft = lft + 2
+        WHERE lft <![CDATA[ > ]]> #{left}
+    </update>
+
+    <update id="rightSubWidthWhereRightGtRight">
+        UPDATE t_category
+        SET rgt = rgt - #{width}
+        WHERE rgt <![CDATA[ > ]]> #{right}
+    </update>
+
+    <update id="leftSubWidthWhereLftGtRight">
+        UPDATE t_category
+        SET lft = lft - #{width}
+        WHERE lft <![CDATA[ > ]]> #{right}
+    </update>
+
+    <update id="deleteWhereLftBetweenLftAndRgt">
+        DELETE FROM t_category
+        WHERE lft
+        BETWEEN #{left} AND #{right}
+    </update>
+
     <select id="selectAll" resultMap="resultMap">
         SELECT * FROM t_category
     </select>

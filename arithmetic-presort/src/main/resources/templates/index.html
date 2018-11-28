@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>thymeleaf</title>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+    <div class="container">
+        <div id="app"
+             class="text-center"
+             style="width: 80%; background-color: gainsboro; margin-top: 200px;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="h2">新增</p>
+                </div>
+                <div class="col-md-12">
+                    <label>请输入分类</label>
+                    <select class="col-md-6" id="category" v-model="selectedCategoryId">
+                        <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label>加入同级还是子级</label>
+                    <select class="col-md-6" id="type" v-model="type">
+                        <option value="0" >同级</option>
+                        <option value="1" >子级</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label>请输入分类名称</label>
+                    <input class="col-md-6" type="text" id="name" name="name" placeholder="请输入分类名"/>
+                </div>
+
+            </div>
+
+            <button class="btn btn-info" v-on:click="btnSubmit">{{message}}</button>
+
+            <div class="col-md-12">
+                <p class="h2">删除</p>
+            </div>
+            <div class="col-md-12">
+                <label>请输入分类</label>
+                <select class="col-md-6" id="deleteCategory" v-model="selectedDeleteCategoryId">
+                    <option :value="item.categoryId" v-for="item in categories">{{item.name}}</option>
+                </select>
+            </div>
+            <button class="btn btn-info" v-on:click="btnDelete">删除</button>
+
+        </div>
+    </div>
+
+</body>
+<script  type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<script  th:src="@{/plugins/bootstrap/js/bootstrap.js}"></script>
+<script type="application/javascript" th:src="@{/js/index.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script type="application/javascript">
+    (function(document, window, $) {
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '提交',
+                categories: [],
+                selectedCategoryId: null,
+                selectedDeleteCategoryId: null,
+                type: 0,
+            },
+
+            methods: {
+
+                getCategories() {
+                    var _that = this;
+                    $.post("findAll", {},
+                        function(resp) {
+                            console.log(resp);
+                            _that.categories = resp;
+                        });
+                },
+
+                btnSubmit() {
+                    var _that = this;
+                    if (_that.selectedCategoryId == null) {
+                        _that.selectedCategoryId = -1
+                    }
+                    $.post("add",
+                        {
+                            type: _that.type,
+                            name: $('#name').val().trim(),
+                            targetCategoryId: _that.selectedCategoryId
+                        },
+                        function(resp) {
+                            console.log(resp);
+                            _that.getCategories();
+                        });
+                },
+
+                btnDelete() {
+                    console.log(this.selectedDeleteCategoryId);
+                    var _that = this;
+                    $.post("delete",
+                        {
+                            targetCategoryId: _that.selectedDeleteCategoryId
+                        },
+                        function(resp) {
+                            console.log(resp);
+                            alert(resp);
+                            _that.getCategories();
+                        });
+                }
+
+            },
+
+            created() {
+                this.getCategories();
+            }
+        });
+
+
+        $('#abtn').on('click', function() {
+            btnClick();
+        })
+
+    })(document, window, jQuery);
+
+</script>
+
+</html>
+
+

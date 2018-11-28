@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Part flash</title>
+</head>
+<!--<link rel="stylesheet" type="text/css" th:href="@{/css/partFlash/studentInfo.css}"/>-->
+<body>
+
+<div class="main">
+    <div>
+        局部刷新
+        <p>
+            局部刷新需要注意的是，顶层的 css 被子组件引用
+        </p>
+    </div>
+    <form>
+        <input type="button" onclick="studentInfo()" value="学生信息">
+        <input type="button" onclick="studentList()" value="学生信息列表">
+    </form>
+
+    <div id="content">
+
+    </div>
+
+</div>
+
+</body>
+<script th:src="@{plugins/jquery.min.js}"></script>
+<script type="application/javascript">
+
+    function studentInfo() {
+        $('#content').html('')
+        $('#content').load('/thymelf/studentInfo')
+    }
+
+    function studentList() {
+        $('#content').html('')
+        $('#content').load('/thymelf/studentList')
+    }
+
+    function loadHtml () {
+
+    }
+
+
+
+
+</script>
+<!--<script type="application/javascript" th:src="@{js/index.js}"></script>-->
+</html>

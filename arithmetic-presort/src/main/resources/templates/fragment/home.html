@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf</title>
+</head>
+<body>
+    <a href="/thymelf/indexPage"> 主页 </a>
+
+    <header>
+        <div th:include="fragment/header::header"></div>
+
+    </header>
+
+    <div>
+        <p>
+            home 頁面的内容， fragment 可以被引用，也可以单独作为页面呈现, fragment 可參見官網：
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#template-layout">
+                https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#template-layout
+            </a>
+        </p>
+    </div>
+
+    <p>
+        fragment 的傳參可參見：
+        <a href="https://blog.csdn.net/whatlookingfor/article/details/78321451">
+            https://blog.csdn.net/whatlookingfor/article/details/78321451
+        </a>
+    </p>
+    <div th:replace="fragment/content::content (contentStudent=${students})">
+    </div>
+
+    <footer>
+        <div th:include="fragment/footer::footer"></div>
+    </footer>
+</body>
+</html>

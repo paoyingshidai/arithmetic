@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf</title>
+</head>
+<!--<style type="text/css">-->
+    <!--table,table tr th, table tr td { border:1px solid #0094ff; }-->
+    <!--td {-->
+        <!--text-align: center;-->
+    <!--}-->
+<!--</style>-->
+<body>
+
+    <div th:fragment="content(contentStudent)">
+        <style type="text/css">
+            table,table tr th, table tr td { border:1px solid #0094ff; }
+            td {
+                text-align: center;
+            }
+        </style>
+        this is my fragment of content!!(注意样式的引入)
+
+        <table>
+            <thead>
+            <tr>
+                <td>姓名</td>
+                <td>学号</td>
+                <td>性别</td>
+                <td>年龄</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student: ${contentStudent}">
+                <div th:object="${student}">
+                    <td><p th:text="${student.username}">姓名</p></td>
+                    <td><p th:text="${student.studentId}">学号</p></td>
+                    <td><p th:text="*{sex}">性别</p></td>
+                    <td><p th:text="*{age}">年龄</p></td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf</title>
+</head>
+<style type="text/css">
+    td {
+        text-align: center;
+    }
+</style>
+<body>
+    <a href="/thymelf/indexPage"> 主页 </a>
+    <p>
+        消息国际化
+    </p>
+
+    <a href="?lang=en_US"> English</a>
+    <a href="?lang=zh_CN"> 中文 </a>
+    <br>
+
+    <button th:text="#{button.submit}"></button>
+
+    <p>占位符(多个)</p>
+    <span>
+        参见：https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#messages
+    </span>
+    <p><span th:text="#{student.message(${student.username}, ${student.age})}">学生姓名</span></p>
+
+</body>
+
+<script src = "https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="application/javascript">
+
+    $(function(){    });
+
+    function changeLocale(lang) {
+        console.log('发送请求');
+
+        $.ajax({
+            type: 'get',
+            url: '/thymelf/changeLocale?lang=' + lang,
+            success: function (data) {
+                // alert(data)
+            },
+            error: function (data) {
+                alert('请求失败: ' + JSON.stringify(data))
+            }
+        })
+    }
+
+</script>
+
+</html>

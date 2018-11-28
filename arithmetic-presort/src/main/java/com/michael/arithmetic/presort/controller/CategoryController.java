@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("category")
 public class CategoryController {
 
     @Autowired
@@ -19,15 +20,27 @@ public class CategoryController {
     private CategoryMapper categoryMapper;
 
     @RequestMapping("add")
-    public String add() {
+    public String add(Category category, Integer type, Long targetCategoryId) {
 
-        categoryService.addCategory(new Category(null, "食物", 1, 2));
+        if (type == 0) {
+            categoryService.addCategoryInSaveLevel(category, targetCategoryId);
+        } else if (type == 1) {
+            categoryService.addCategoryInSubLevel(category, targetCategoryId);
+        }
 
         return "succcess";
     }
 
+    @RequestMapping("delete")
+    public String delete(Long targetCategoryId) {
 
-    @RequestMapping("selectAll")
+        categoryService.deleteCategory(targetCategoryId);
+
+        return "delete succcess";
+    }
+
+
+    @RequestMapping("findAll")
     public List<Category> selectAll() {
 
         return categoryMapper.selectAll();

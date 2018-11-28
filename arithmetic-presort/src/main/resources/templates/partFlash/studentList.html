@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/partFlash/studentList.css}" />
+<div class="main">
+    <div>
+        学生信息列表
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <td>姓名</td>
+            <td>学号</td>
+            <td>性别</td>
+            <td>年龄</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s : ${students}">
+            <div th:object="${s}">
+                <td><p th:text="${s.username}">姓名</p></td>
+                <td><p th:text="${s.studentId}">学号</p></td>
+                <td><p th:text="*{sex}">性别</p></td>
+                <td><p th:text="*{age}">年龄</p></td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

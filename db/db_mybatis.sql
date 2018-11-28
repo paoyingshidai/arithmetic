@@ -26,6 +26,8 @@ CREATE TABLE `t_category` (
   `name` VARCHAR(20) DEFAULT NULL,
   `lft` BIGINT(20) DEFAULT NULL,
   `rgt` BIGINT(20) DEFAULT NULL,
+  `level` int(10) DEFAULT NULL COMMENT '层级',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT '父亲节点 ID',
   PRIMARY KEY (`category_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4
 

@@ -29,6 +29,12 @@ public class Category extends Model<Category> {
     @TableField("rgt")
     private Integer rgt;
 
+    @TableField("parent_id")
+    private Long parentId;
+
+    @TableField("level")
+    private Integer level;
+
     @Override
     protected Serializable pkVal() {
         return this.categoryId;

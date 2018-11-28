@@ -19,7 +19,7 @@ public class CategoryServiceTest {
     @Test
     public void addCategory() {
 
-        categoryService.addCategory(new Category(null, "食物", 1, 2));
+        categoryService.addCategory(new Category(null, "食物", 1, 2, null, null));
 
     }
 
@@ -28,14 +28,14 @@ public class CategoryServiceTest {
     public void addCategoryInSaveLevel() {
 
 //        categoryService.addCategoryInSaveLevel(new Category(null, "服装", null, null), 1L);
-        categoryService.addCategoryInSaveLevel(new Category(null, "蔬菜", null, null), 3L);
+        categoryService.addCategoryInSaveLevel(new Category(null, "蔬菜", null, null, null, null), 3L);
     }
 
 
     @Test
     public void addCategoryInSubLevel() {
 
-        categoryService.addCategoryInSubLevel(new Category(null, "水果", null, null), 1L);
+        categoryService.addCategoryInSubLevel(new Category(null, "水果", null, null, null, null), 1L);
 
     }
 

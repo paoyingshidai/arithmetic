@@ -3,12 +3,11 @@
 <mapper namespace="com.michael.arithmetic.presort.repository.CategoryMapper">
 
     <resultMap id="resultMap" type="com.michael.arithmetic.presort.entity.Category">
-        <id column="catetory_id" property="categoryId"/>
+        <id column="category_id" property="categoryId"/>
         <result column="name" property="name"></result>
         <result column="lft" property="lft"></result>
         <result column="rgt" property="rgt"></result>
     </resultMap>
-
 
     <sql id="column">
         category_id,
@@ -17,19 +16,23 @@
         rgt
     </sql>
 
-    <select id="save">
-        insert into t_category
+    <update id="save" useGeneratedKeys="true" keyProperty="categoryId">
+        INSERT INTO t_category
         (
           category_id,
           name,
           lft,
           rgt
-        ) values (
+        ) VALUES (
           #{categoryId},
           #{name},
           #{lft},
           #{rgt}
         )
+    </update>
+
+    <select id="selectAll" resultMap="resultMap">
+        SELECT * FROM t_category
     </select>
 
 </mapper>

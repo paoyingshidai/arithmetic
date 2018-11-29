@@ -1,7 +1,5 @@
 package com.michael.arithmetic.presort.service;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.michael.arithmetic.presort.entity.Category;
 import com.michael.arithmetic.presort.object.TreeNode;
@@ -9,7 +7,6 @@ import com.michael.arithmetic.presort.repository.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.thymeleaf.expression.Lists;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +20,9 @@ public class CategoryService extends ServiceImpl<CategoryMapper, Category> imple
 
     /**
      * 添加同级节点
+     *
+     * 在变更表数据的时候必须要把整个表锁定，不允许有竞争行为，使用悲观锁
+     *
      * https://blog.csdn.net/misakaqunianxiatian/article/details/52432071
      * @param category
      * @param id

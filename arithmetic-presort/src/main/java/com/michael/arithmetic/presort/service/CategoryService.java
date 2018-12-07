@@ -1,6 +1,8 @@
 package com.michael.arithmetic.presort.service;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.michael.arithmetic.presort.entity.Category;
 import com.michael.arithmetic.presort.object.TreeNode;
 import com.michael.arithmetic.presort.repository.CategoryMapper;
@@ -34,7 +36,8 @@ public class CategoryService extends ServiceImpl<CategoryMapper, Category> imple
         // 顶级根
         if (id == -1) {
             Category root = categoryMapper.selectOne(
-                    new Category(null, null, 1, null, null, null));
+                    new QueryWrapper<>(new Category(null, null, 1, null, null, null)));
+//                    new Category(null, null, 1, null, null, null));
             // 判断是否存在一个根
             if (root == null) {
                 category.setLft(1);

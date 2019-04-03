@@ -20,10 +20,38 @@ public class SelectionSort {
 	    return arr;
 	}
 
+
+	/**
+	 * ¡Ω≤„—≠ª∑
+	 * @param arr
+	 * @return
+	 */
+	public static Integer[] mySort(Integer[] arr) {
+
+		int len = arr.length;
+		Integer targetIndex;
+		for (int i = 0; i < len - 1; i++) {
+			targetIndex = i;
+			for (int j = i + 1; j < len; j++) {
+				if (arr[targetIndex] > arr[j]) {
+					targetIndex = j;
+				}
+			}
+
+			Integer temp = arr[i];
+			arr[i] = arr[targetIndex];
+			arr[targetIndex] = temp;
+		}
+
+		return arr;
+	}
+
+
 	public static void main(String[] args) {
 
 		Integer[] arr = {2, 5, 6, 9, 8, 1, 3};
-		selectionSort(arr);
+//		selectionSort(arr);
+		mySort(arr);
 
 		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);

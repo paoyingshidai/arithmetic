@@ -1,7 +1,7 @@
 package com.michael.sort;
 
 /**
- * Ã°ÅİÅÅĞò
+ * å†’æ³¡æ’åº
  * @author Michael
  */
 public class BubbleSort {
@@ -9,9 +9,9 @@ public class BubbleSort {
 	public static Integer[] bubbleSort(Integer[] arr) {
 	    int len = arr.length;
 	    for (int i = 0; i < len; i++) {
-	        for (int j = 0; j < len - 1 - i; j++) {  // Ä©Î²µÄ¾Í²»ĞèÒª±È½ÏÁË
-	            if (arr[j] > arr[j+1]) {        	 //ÏàÁÚÔªËØÁ½Á½¶Ô±È
-	            	Integer temp = arr[j+1];         //ÔªËØ½»»»
+	        for (int j = 0; j < len - 1 - i; j++) {  // Ä©Î²ï¿½Ä¾Í²ï¿½ï¿½ï¿½Òªï¿½È½ï¿½ï¿½ï¿½
+	            if (arr[j] > arr[j+1]) {        	 //ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½
+	            	Integer temp = arr[j+1];         //Ôªï¿½Ø½ï¿½ï¿½ï¿½
 	                arr[j+1] = arr[j];
 	                arr[j] = temp;
 	            }
@@ -20,9 +20,30 @@ public class BubbleSort {
 	    return arr;
 	}
 
+
+	public static Integer[] mySort(Integer[] arr) {
+
+		int len = arr.length;
+
+		for (int i = 0; i < len; i++) {
+			for (int j = 0; j < len-1-i; j++) {
+				if (arr[j] > arr[j+1]) {
+					Integer temp = arr[j+1];
+					arr[j+1] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		return arr;
+	}
+
+
+
+
 	public static void main(String[] args) {
 		Integer[] arr = {2, 5, 6, 9, 8, 1, 3};
-		bubbleSort(arr);
+//		bubbleSort(arr);
+		mySort(arr);
 		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);
 		}

@@ -11,46 +11,46 @@ public class QuickSort {
 	/**
 	 * 一次快速排序
 	 * @param array 数组
-	 * @param lo 数组的前下标
-	 * @param hi 数组的后下标
+	 * @param low 数组的前下标
+	 * @param high 数组的后下标
 	 * @return key的下标index，也就是分片的间隔点
 	 */
-	public static int partition(int []array,int lo,int hi){
+	public static int partition(int []array,int low,int high){
 	    /** 固定的切分方式 */
-	    int key=array[lo];//选取了基准点
-	    while(lo<hi){
+	    int key = array[low];//选取了基准点
+	    while(low < high){
 	        //从后半部分向前扫描
-	        while(array[hi]>=key&&hi>lo){
-	            hi--;
+	        while(array[high] >= key && high > low){
+	            high--;
 	        }
-	        array[lo]=array[hi];
+	        array[low] = array[high];
 	        //从前半部分向后扫描
-	        while(array[lo]<=key&&hi>lo){
-	            lo++;
+	        while(array[low] <= key && high > low){
+	            low++;
 	        }
-	        array[hi]=array[lo];
+	        array[high] = array[low];
 	    }
-	    array[hi]=key;//最后把基准存入
-	    return hi;
+	    array[high] = key;//最后把基准存入
+	    return high;
 	}
 
 
 	/**
 	 * 快速排序
 	 * @param array
-	 * @param lo
-	 * @param hi
+	 * @param low
+	 * @param high
 	 */
-	public static void quickSort(int[] array,int lo ,int hi){
-	    if(lo>=hi){
+	public static void quickSort(int[] array,int low ,int high){
+	    if(low >= high){
 	        return ;
 	    }
 	    //进行第一轮排序获取分割点
-	    int index=partition(array,lo,hi);
+	    int index=partition(array,low,high);
 	    //排序前半部分
-	    quickSort(array, lo, index - 1);
+	    quickSort(array, low, index - 1);
 	    //排序后半部分
-	    quickSort(array,index+1,hi);
+	    quickSort(array,index+1,high);
 	}
 
 

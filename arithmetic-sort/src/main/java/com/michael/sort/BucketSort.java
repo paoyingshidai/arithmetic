@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Õ∞≈≈–Ú
+ */
 public class BucketSort {
 
 	    /**

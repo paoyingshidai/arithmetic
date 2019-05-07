@@ -15,17 +15,17 @@ public class QuickSort {
 	 * @param high 数组的后下标
 	 * @return key的下标index，也就是分片的间隔点
 	 */
-	public static int partition(int []array,int low,int high){
+	public static int partition(int []array, int low, int high){
 	    /** 固定的切分方式 */
 	    int key = array[low];//选取了基准点
-	    while(low < high){
+	    while(low < high) {
 	        //从后半部分向前扫描
-	        while(array[high] >= key && high > low){
+	        while(array[high] >= key && high > low) {
 	            high--;
 	        }
 	        array[low] = array[high];
 	        //从前半部分向后扫描
-	        while(array[low] <= key && high > low){
+	        while(array[low] <= key && high > low) {
 	            low++;
 	        }
 	        array[high] = array[low];
@@ -41,12 +41,12 @@ public class QuickSort {
 	 * @param low
 	 * @param high
 	 */
-	public static void quickSort(int[] array,int low ,int high){
+	public static void quickSort(int[] array, int low, int high){
 	    if(low >= high){
 	        return ;
 	    }
 	    //进行第一轮排序获取分割点
-	    int index=partition(array,low,high);
+	    int index = partition(array, low, high);
 	    //排序前半部分
 	    quickSort(array, low, index - 1);
 	    //排序后半部分
@@ -59,7 +59,7 @@ public class QuickSort {
 
 	    quickSort(arr, 0, arr.length-1);
 
-	    for(int i:arr){
+	    for(int i : arr){
 	        System.out.print(i+",");
 	    }
 	}

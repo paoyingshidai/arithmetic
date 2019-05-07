@@ -23,11 +23,13 @@ public class QuickSort {
 	        while(array[high] >= key && high > low) {
 	            high--;
 	        }
+	        // 低于基准点的就交换
 	        array[low] = array[high];
 	        //从前半部分向后扫描
 	        while(array[low] <= key && high > low) {
 	            low++;
 	        }
+			// 高于基准点的就交换
 	        array[high] = array[low];
 	    }
 	    array[high] = key;//最后把基准存入
@@ -57,7 +59,7 @@ public class QuickSort {
 	public static void main(String[] args) {
 	    int[] arr = {1,9,3,12,7,8,3,4,65,22};
 
-	    quickSort(arr, 0, arr.length-1);
+	    quickSort(arr, 0, arr.length - 1);
 
 	    for(int i : arr){
 	        System.out.print(i+",");

@@ -9,6 +9,7 @@
   	<module>arithmetic-sort</module>
       <module>arithmetic-presort</module>
       <module>arithmetic-search</module>
+      <module>arithmetic-array</module>
   </modules>
 
 

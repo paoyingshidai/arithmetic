@@ -70,7 +70,7 @@ public class MaxSubArray {
         for (int i = 0; i < arr.length; i++) {
             if (tmp > 0) {
                 tmp += arr[i];
-            } else {            // 当 tmp < 0 时，证明前面的子数组和小于0，则需要重新计算下一段子数组
+            } else {                // 当 tmp < 0 时，证明前面的子数组和小于0，则需要重新计算下一段子数组
                 tmp = arr[i];
                 start = i;
             }
@@ -87,12 +87,19 @@ public class MaxSubArray {
 
     /**
      * kadane 算法, 这是解决该问题的最优解，时间复杂度为O(n).
+     *
+     * 论证为何 kadane 算法可以解决该问题
+     *
      * @param arr
      * @return
      */
     public int kadane(int arr[]) {
+        if (arr.length == 1) return arr[0];
         int maxEndingHere = arr[0], maxSoFar = arr[0];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
+            // 关键步骤：
+            // 这个方法与动态规划相似，如果 maxEndingHere(i) = max(arr[i], maxEndingHere(i-1) + arr[i]) 取arr[i]成立，
+            // 则 maxEndingHere(i-1) 必定为负数, 如果为负数，则取当前值arr[i], 所以跟动态规划类似
             maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
             maxSoFar = Math.max(maxSoFar, maxEndingHere);
         }

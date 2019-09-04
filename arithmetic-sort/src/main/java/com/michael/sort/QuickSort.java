@@ -2,7 +2,7 @@ package com.michael.sort;
 
 
 /**
- * 快速排序
+ * 快速排序 详细： https://blog.csdn.net/pengzonglu7292/article/details/84938910
  * @author windows
  *
  */
@@ -17,22 +17,24 @@ public class QuickSort {
 	 */
 	public static int partition(int []array, int low, int high){
 	    /** 固定的切分方式 */
-	    int key = array[low];//选取了基准点
+	    int base = array[low];// 选取了基准点
 	    while(low < high) {
-	        //从后半部分向前扫描
-	        while(array[high] >= key && high > low) {
+	        // 从后半部分向前扫描, 找到小于基准点的数
+	        while(array[high] >= base && high > low) {
 	            high--;
 	        }
 	        // 低于基准点的就交换
 	        array[low] = array[high];
-	        //从前半部分向后扫描
-	        while(array[low] <= key && high > low) {
+
+
+	        // 从前半部分向后扫描，找到大于基准点的数
+	        while(array[low] <= base && high > low) {
 	            low++;
 	        }
 			// 高于基准点的就交换
 	        array[high] = array[low];
 	    }
-	    array[high] = key;//最后把基准存入
+	    array[high] = base;	// 最后把基准存入
 	    return high;
 	}
 
@@ -52,7 +54,7 @@ public class QuickSort {
 	    //排序前半部分
 	    quickSort(array, low, index - 1);
 	    //排序后半部分
-	    quickSort(array,index+1,high);
+	    quickSort(array,index+1, high);
 	}
 
 

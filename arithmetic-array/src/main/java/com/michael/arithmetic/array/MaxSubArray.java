@@ -1,5 +1,10 @@
 package com.michael.arithmetic.array;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+
+import java.io.UnsupportedEncodingException;
+
 /**
  * 最大子数组：
  * 给定一个包含正数和负数的数组，找出这个数组中一个连续的子数组，使得这个子数组之和最大
@@ -106,12 +111,59 @@ public class MaxSubArray {
         return maxSoFar;
     }
 
-    public static void main(String[] args) {
-        int[] data = new int[]{13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
-        MaxSubArray maxSubArray = new MaxSubArray();
-        System.out.println(maxSubArray.divide(data, 0, data.length - 1));
-        System.out.println(maxSubArray.dynamic(data));
-        System.out.println(maxSubArray.kadane(data));
+    public static void main(String[] args) throws UnsupportedEncodingException {
+//        int[] data = new int[]{13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+//        MaxSubArray maxSubArray = new MaxSubArray();
+//        System.out.println(maxSubArray.divide(data, 0, data.length - 1));
+//        System.out.println(maxSubArray.dynamic(data));
+//        System.out.println(maxSubArray.kadane(data));
+
+
+        User user = new User();
+        user.setPassword("password");
+
+        String jsonString = JSON.toJSONString(user, SerializerFeature.PrettyFormat,
+                SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.UseSingleQuotes);
+        System.out.println(jsonString);
+
+
+        String fromByte = new String(jsonString.getBytes("UTF-8"));
+
+        System.out.println(fromByte);
+
+
     }
+
+
+
+
+
+    static class User {
+        private String username;
+        private String password;
+
+        public String getPassword() {
+            return password;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+    }
+
+
+
+
+
+
+
 
 }

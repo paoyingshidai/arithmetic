@@ -1,11 +1,14 @@
+/*
 package com.michael.sort.my;
 
 
+*/
 /**
  * ©ЛкыеепР
  * @author Michael
  *
- */
+ *//*
+
 public class QuickSort {
 
 
@@ -48,3 +51,4 @@ public class QuickSort {
 	}
 
 }
+*/

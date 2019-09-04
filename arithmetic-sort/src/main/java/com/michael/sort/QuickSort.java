@@ -61,11 +61,47 @@ public class QuickSort {
 	public static void main(String[] args) {
 	    int[] arr = {1,9,3,12,7,8,3,4,65,22};
 
-	    quickSort(arr, 0, arr.length - 1);
+//	    quickSort(arr, 0, arr.length - 1);
+	    sortq(arr, 0, arr.length - 1);
 
 	    for(int i : arr){
 	        System.out.print(i+",");
 	    }
 	}
+
+
+	private static int sort(int[] array, int low, int high) {
+
+		int base = array[low];
+
+		while(low < high) {
+
+			while(array[high] >= base && low < high) {
+				high--;
+			}
+			array[low] = array[high];
+
+			while(array[low] <= base && low < high) {
+				low++;
+			}
+			array[high] = array[low];
+		}
+		array[high] = base;
+
+		return high;
+	}
+
+	public static void sortq(int[] array, int low, int high) {
+
+		if (low >= high) return;
+
+		int index = sort(array, low, high);
+
+		sortq(array, low, index);
+
+		sortq(array, index + 1, high);
+
+	}
+
 
 }

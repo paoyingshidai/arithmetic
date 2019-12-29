@@ -36,7 +36,7 @@ public class ShellSort {
      */
     public static void mySort(int[] data) {
         for (int increment = data.length / 2; increment > 0; increment /= 2) {
-            for (int i = increment; i < data.length; i++) {
+            for (int i = increment; i < data.length; i++) { // 插入排序的 increment = 1;
                 int temp = data[i];
                 int j = i - increment;
 
